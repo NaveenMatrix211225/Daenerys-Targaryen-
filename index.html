@@ -3,185 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avengers Initiative</title>
+  <title>Marvel Themes – Survey Generator</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 
   <style>
+    /* Base layout */
     body {
       margin: 0;
       padding: 0;
       font-family: 'Orbitron', sans-serif;
-      background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-      color: #fff;
       text-align: center;
       min-height: 100vh;
-      position: relative;
+      color: #fff;
+      background: #000;
+      transition: background 1s;
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.65); /* darker tech overlay */
-      z-index: -1;
-    }
-
     h1 {
       margin: 20px 0;
-      font-size: 3rem;
-      text-shadow: 2px 2px 12px #ff0000;
-      color: #00d9ff;
-      animation: fadeIn 2s ease-in-out;
-      letter-spacing: 3px;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
     }
-
     .container {
-      background: rgba(15, 15, 25, 0.9);
+      background: rgba(0,0,0,0.75);
       padding: 20px;
       border-radius: 18px;
       max-width: 950px;
       margin: auto;
       box-shadow: 0 0 25px #ff0000;
-      animation: slideDown 1.5s ease;
-      border: 2px solid #00d9ff;
     }
-
-    .file-section input {
+    select {
       margin: 10px;
       padding: 8px;
       border-radius: 8px;
-      border: none;
-      background: #f2f2f2;
-      color: #111;
-    }
-
-    button {
-      margin: 5px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
       font-weight: bold;
-      transition: transform 0.2s, background 0.2s;
-      background: #ff0000;
-      color: #fff;
-      box-shadow: 0 2px 8px #00d9ff;
     }
-
-    .btn-primary { background: #00d9ff; color: #000; }
-    .btn-warning { background: #ffaa00; color: #000; }
-    .btn-success { background: #28e06f; color: #fff; }
-
-    button:hover {
-      transform: scale(1.08);
-      background: #ff4d4d;
-    }
-
-    .table-container {
-      margin-bottom: 20px;
-      overflow-x: auto;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 10px;
-      background: rgba(255,255,255,0.04);
-      box-shadow: 0 0 8px #ff0000;
-      border-radius: 12px;
-      overflow: hidden;
+      margin-top: 15px;
     }
-
     th, td {
-      border: 1px solid #00d9ff;
       padding: 10px;
-      color: #f2f2f2;
-      background: rgba(20,20,40,0.9);
+      border: 1px solid #999;
     }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border: none;
+    }
+    button:hover { transform: scale(1.08); }
 
-    th {
-      background: #111;
-      color: #00d9ff;
-      letter-spacing: 1px;
-    }
+    /* ---------------- THEMES ---------------- */
 
-    /* Avengers symbols animation */
-    .symbol {
-      position: fixed;
-      top: -50px;
-      font-size: 1.8em;
-      pointer-events: none;
-      animation: fall linear infinite;
-      opacity: 0.9;
-      filter: drop-shadow(0 0 10px #ff0000);
+    body.ironman {
+      background: url('https://wallpapercave.com/wp/wp2552686.jpg') no-repeat center/cover;
     }
+    body.ironman h1 { color: #00d9ff; text-shadow: 0 0 15px #ff0000; }
+    body.ironman .container { border: 2px solid #ffcc00; box-shadow: 0 0 30px #ff0000; }
+    body.ironman button { background: #ff0000; color: #fff; }
 
-    @keyframes fall {
-      0% { top: -50px; }
-      100% { top: 100vh; }
+    body.captain {
+      background: url('https://wallpapercave.com/wp/wp2588021.jpg') no-repeat center/cover;
     }
+    body.captain h1 { color: #fff; text-shadow: 0 0 15px #0033cc; }
+    body.captain .container { border: 2px solid #0055ff; box-shadow: 0 0 30px #ff0000; }
+    body.captain button { background: #0033cc; color: #fff; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    body.thor {
+      background: url('https://wallpapercave.com/wp/wp4298847.jpg') no-repeat center/cover;
     }
+    body.thor h1 { color: #00ccff; text-shadow: 0 0 20px #fff; }
+    body.thor .container { border: 2px solid #00ccff; box-shadow: 0 0 30px #00ccff; }
+    body.thor button { background: #666; color: #fff; }
 
-    @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    body.hulk {
+      background: url('https://wallpapercave.com/wp/wp2446707.jpg') no-repeat center/cover;
     }
+    body.hulk h1 { color: #00ff00; text-shadow: 0 0 20px #000; }
+    body.hulk .container { border: 2px solid #00ff00; box-shadow: 0 0 30px #008000; }
+    body.hulk button { background: #008000; color: #fff; }
+
+    body.panther {
+      background: url('https://wallpapercave.com/wp/wp4056300.jpg') no-repeat center/cover;
+    }
+    body.panther h1 { color: #a020f0; text-shadow: 0 0 20px #fff; }
+    body.panther .container { border: 2px solid #a020f0; box-shadow: 0 0 30px #a020f0; }
+    body.panther button { background: #111; color: #a020f0; }
+
+    body.strange {
+      background: url('https://wallpapercave.com/wp/wp2186536.jpg') no-repeat center/cover;
+    }
+    body.strange h1 { color: #ff6600; text-shadow: 0 0 20px #ff0000; }
+    body.strange .container { border: 2px solid #ff6600; box-shadow: 0 0 30px #ff6600; }
+    body.strange button { background: #ff0000; color: #fff; }
+
+    body.spiderman {
+      background: url('https://wallpapercave.com/wp/wp1917159.jpg') no-repeat center/cover;
+    }
+    body.spiderman h1 { color: #ff0000; text-shadow: 0 0 20px #000; }
+    body.spiderman .container { border: 2px solid #0000ff; box-shadow: 0 0 30px #ff0000; }
+    body.spiderman button { background: #ff0000; color: #fff; }
+
+    body.guardians {
+      background: url('https://wallpapercave.com/wp/wp1933965.jpg') no-repeat center/cover;
+    }
+    body.guardians h1 { color: #ff00ff; text-shadow: 0 0 20px #00ffff; }
+    body.guardians .container { border: 2px solid #00ffff; box-shadow: 0 0 30px #ff00ff; }
+    body.guardians button { background: #ff00ff; color: #fff; }
+
+    body.avengers {
+      background: url('https://wallpapercave.com/wp/wp1816422.jpg') no-repeat center/cover;
+    }
+    body.avengers h1 { color: #00d9ff; text-shadow: 0 0 20px #ff0000; }
+    body.avengers .container { border: 2px solid #00d9ff; box-shadow: 0 0 30px #ff0000; }
+    body.avengers button { background: #ff0000; color: #fff; }
+
+    body.thanos {
+      background: url('https://wallpapercave.com/wp/wp4021386.jpg') no-repeat center/cover;
+    }
+    body.thanos h1 { color: #ffcc00; text-shadow: 0 0 20px #800080; }
+    body.thanos .container { border: 2px solid #ffcc00; box-shadow: 0 0 30px #800080; }
+    body.thanos button { background: #800080; color: #fff; }
   </style>
 </head>
-<body>
-  <h1>AVENGERS INITIATIVE</h1>
+<body class="ironman"> <!-- Default Theme -->
 
-  <!-- Falling Avengers symbols -->
-  <span class="symbol" style="left: 15%; animation-delay: 0s;">★</span>
-  <span class="symbol" style="left: 35%; animation-delay: 1s;">⚡</span>
-  <span class="symbol" style="left: 55%; animation-delay: 2s;">🛡</span>
-  <span class="symbol" style="left: 75%; animation-delay: 3s;">🕷</span>
-  <span class="symbol" style="left: 90%; animation-delay: 1.5s;">⚔</span>
+  <h1>Marvel Survey Generator</h1>
+
+  <!-- Theme Switcher -->
+  <label for="themeSelect"><b>Choose Theme:</b></label>
+  <select id="themeSelect">
+    <option value="ironman">Iron Man</option>
+    <option value="captain">Captain America</option>
+    <option value="thor">Thor</option>
+    <option value="hulk">Hulk</option>
+    <option value="panther">Black Panther</option>
+    <option value="strange">Doctor Strange</option>
+    <option value="spiderman">Spider-Man</option>
+    <option value="guardians">Guardians</option>
+    <option value="avengers">Avengers</option>
+    <option value="thanos">Thanos</option>
+  </select>
 
   <div class="container">
-    <div class="file-section">
-      <h3>Upload SHIELD File</h3>
-      <input type="file" id="fileInput" accept=".xlsx, .xls">
-      <div class="button-group">
-        <button class="btn-primary" id="generateBtn" onclick="processFile()" disabled>Generate Links</button>
-        <button class="btn-warning" onclick="clearData()">Clear All</button>
-      </div>
+    <input type="file" id="fileInput" accept=".xlsx, .xls">
+    <div>
+      <button id="generateBtn" onclick="processFile()" disabled>Generate Links</button>
+      <button onclick="clearData()">Clear All</button>
     </div>
-
-    <div id="status" class="status" style="display: none;"></div>
-
-    <div class="button-group">
-      <button class="btn-success" id="copyAllBtn" onclick="copyAllLinks()" disabled>Copy All Links</button>
-      <button class="btn-primary" onclick="exportToCSV()" id="exportBtn" disabled>Export to CSV</button>
+    <div>
+      <button id="copyAllBtn" onclick="copyAllLinks()" disabled>Copy All Links</button>
+      <button onclick="exportToCSV()" id="exportBtn" disabled>Export to CSV</button>
     </div>
-
-    <div class="table-container">
-      <table id="linkTable">
-        <thead>
-          <tr>
-            <th>Receipt No.</th>
-            <th>Sales Type</th>
-            <th>Generated Link</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+    <table id="linkTable">
+      <thead>
+        <tr><th>Receipt No.</th><th>Sales Type</th><th>Generated Link</th><th>Action</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </div>
 
   <!-- XLSX library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-
   <script>
     let currentData = [];
-    const storeID = "91KDIPL879-01"; // Store Code
+    const storeID = "91KDIPL879-01";
 
     function convertExcelDate(serial) {
       const date = new Date((serial - 25569) * 86400 * 1000);
@@ -297,8 +288,10 @@
       a.click();
     }
 
-    document.querySelectorAll('.symbol').forEach((sym) => {
-      sym.style.animationDuration = `${5 + Math.random() * 6}s`;
+    // Theme Switcher
+    const themeSelect = document.getElementById("themeSelect");
+    themeSelect.addEventListener("change", function() {
+      document.body.className = this.value;
     });
   </script>
 </body>
